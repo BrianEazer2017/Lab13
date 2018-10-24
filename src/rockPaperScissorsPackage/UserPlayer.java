@@ -15,21 +15,15 @@ public class UserPlayer extends Player {
 		Scanner sc = new Scanner(System.in);
 		String choice = Validator.getStringMatchingRegex(sc, 
 				"Choose between 'ROCK', 'PAPER', and 'SCISSORS'.", "ROCK|PAPER|SCISSORS");
-		Roshambo userRoshambo = Roshambo.ROCK;
-		switch (choice) { 
-	        case "ROCK":  
-	            userRoshambo = Roshambo.ROCK;
-	            break; 
-	        case "PAPER": 
-	            userRoshambo = Roshambo.PAPER; 
-	            break; 
-	        case "SCISSORS": 
-	            userRoshambo = Roshambo.SCISSORS;
-	            break; 
-		 }
-		return userRoshambo;
+		Roshambo userRoshambo;
+		 if (choice.equals("ROCK")){ 
+			 userRoshambo = Roshambo.ROCK;
+		} else if (choice.equals("PAPER")) {
+			 userRoshambo = Roshambo.PAPER;
+		} else {
+			userRoshambo = Roshambo.SCISSORS;
 	}
-	
-	
+	return userRoshambo;
+	}
 
 }

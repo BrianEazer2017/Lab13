@@ -45,67 +45,68 @@ public class RockPaperScissorsApp {
 
 	private static void play(Scanner sc, String name, String stringOpponent, UserPlayer user,
 			Player opponent, Roshambo userChoice, Roshambo opponentChoice, TreeMap<Player, Integer> score) {
-		displayChoices(sc, stringOpponent, stringOpponent, user, opponent, opponentChoice, opponentChoice);
+		displayChoices(sc, name, stringOpponent, user, opponent, userChoice, opponentChoice);
 		if (userChoice.equals(Roshambo.PAPER)) {
 			if (opponentChoice.equals(Roshambo.ROCK)) {
 				displayWinner(user, opponent);
 				score = updateScore(user, opponent, score);
 				displayScore(score);
-				askToContinue(sc, stringOpponent, stringOpponent, user, opponent, opponentChoice, opponentChoice, score);
+				askToContinue(sc, stringOpponent, user, opponent, score);
 			}
 			else if (opponentChoice.equals(Roshambo.SCISSORS)) {
 				displayWinner(opponent, user);
 				score = updateScore(opponent, user, score);
 				displayScore(score);
-				askToContinue(sc, stringOpponent, stringOpponent, user, opponent, opponentChoice, opponentChoice, score);
+				askToContinue(sc, stringOpponent, user, opponent, score);
 			} else {
 				System.out.println("Draw!");
-				askToContinue(sc, stringOpponent, stringOpponent, user, opponent, opponentChoice, opponentChoice, score);
+				askToContinue(sc,  stringOpponent, user, opponent, score);
 			}
 		} else if (userChoice.equals(Roshambo.ROCK)) {
 			if (opponentChoice.equals(Roshambo.PAPER)) {
 				displayWinner(opponent, user);
 				score = updateScore(opponent, user, score);
 				displayScore(score);
-				askToContinue(sc, stringOpponent, stringOpponent, user, opponent, opponentChoice, opponentChoice, score);
+				askToContinue(sc,  stringOpponent, user, opponent, score);
 			}
 			else if (opponentChoice.equals(Roshambo.SCISSORS)) {
 				displayWinner(user, opponent);
 				score = updateScore(user, opponent, score);
 				displayScore(score);
-				askToContinue(sc, stringOpponent, stringOpponent, user, opponent, opponentChoice, opponentChoice, score);
+				askToContinue(sc, stringOpponent, user, opponent, score);
 			} else {
 				System.out.println("Draw!");
-				askToContinue(sc, stringOpponent, stringOpponent, user, opponent, opponentChoice, opponentChoice, score);
+				askToContinue(sc, stringOpponent, user, opponent,  score);
 			}
 		} else {
 			if (opponentChoice.equals(Roshambo.PAPER)) {
 				displayWinner(user, opponent);
 				score = updateScore(user, opponent, score);
 				displayScore(score);
-				askToContinue(sc, stringOpponent, stringOpponent, user, opponent, opponentChoice, opponentChoice, score);
+				askToContinue(sc, stringOpponent, user, opponent, score);
 			}
 			else if (opponentChoice.equals(Roshambo.ROCK)) {
 				displayWinner(opponent, user);
 				score = updateScore(opponent, user, score);
 				displayScore(score);
-				askToContinue(sc, stringOpponent, stringOpponent, user, opponent, opponentChoice, opponentChoice, score);
+				askToContinue(sc, stringOpponent, user, opponent, score);
 			}
 			else {
 				System.out.println("Draw!");
-				askToContinue(sc, stringOpponent, stringOpponent, user, opponent, opponentChoice, opponentChoice, score);
+				askToContinue(sc, stringOpponent, user, opponent, score);
 			}
 		}
 	}
 
-	private static void askToContinue(Scanner sc, String name, String stringOpponent, UserPlayer user,
-			Player opponent, Roshambo userChoice, Roshambo opponentChoice, TreeMap<Player, Integer> score) {
+	private static void askToContinue(Scanner sc, String name, UserPlayer user,
+			Player opponent,  TreeMap<Player, Integer> score) {
+			String stringOpponent = "";
 		    if (Validator.getString(sc, "Would you like to continue?").matches("[yY][eE]*[sS]*")){
-		    	inputRPS(sc, stringOpponent, stringOpponent, user, opponent, score);
+		    	inputRPS(sc, name, stringOpponent, user, opponent, score);
 		    } else if (Validator.getString(sc, "Would you like to continue?").matches("[nN][oO]*")){
 		    	System.out.println("Peace.");
 		    } else {
-		    	askToContinue(sc, stringOpponent, stringOpponent, user, opponent, opponentChoice, opponentChoice, score);
+		    	askToContinue(sc, name, user, opponent, score);
 		    }
 	}
 
@@ -118,13 +119,13 @@ public class RockPaperScissorsApp {
 	private static TreeMap<Player, Integer> updateScore(Player winner, Player loser,
 			TreeMap<Player, Integer> score) {
 		
-		if (score.containsKey(winner) == false) {
+		/*if (score.containsKey(winner) == false) {
 		    score.put(winner, 1);
 		    score.put(loser, 0);
 		}
 		else {
 		    score.put(winner, count + 1);
-		}
+		}*/
 		return score;
 	}
 
